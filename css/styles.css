@@ -92,17 +92,21 @@ input.text {
     margin: 20px 0; }
     .loc-img-area .loc-img .loc-img-title {
       position: absolute;
-      top: 30px;
+      bottom: 60px;
+      left: 0;
       padding: 0.1em 1em;
-      color: #6441a5;
-      background-color: rgba(0, 0, 0, 0.2);
+      color: #fff;
+      background-color: rgba(0, 0, 0, 0.6);
       font-size: 3em;
       font-weight: 300;
       letter-spacing: 2px;
       border-radius: 0 4px 4px 0; }
+      .loc-img-area .loc-img .loc-img-title a {
+        color: #eee;
+        text-shadow: 0 0 0 black, 0 0 0.1em #6441a5, 0 0 0.1em #6441a5; }
 
 .loc-data {
-  padding: 3em 0 4em; }
+  padding: 3em 2em 4em; }
   .loc-data .lqi, .loc-data .demographics {
     float: left;
     width: 50%;
@@ -113,16 +117,16 @@ input.text {
       font-weight: 300;
       letter-spacing: 1.8px;
       width: 100%;
-      color: #fff;
-      background-color: #6441a5;
+      color: #6441a5;
+      background-color: #d0C3ff;
       border-bottom: 2px solid #6441a5;
       margin-bottom: 10px;
-      padding-left: 0.75em;
+      padding-left: 1.6em;
       padding-top: 0.2em;
       padding-bottom: 0.2em;
       border-radius: 6px 6px 0 0; }
     .loc-data .lqi .data, .loc-data .demographics .data {
-      padding: 1em 2em 2em 2em; }
+      padding: 1em 4em; }
       .loc-data .lqi .data dl dt, .loc-data .demographics .data dl dt {
         display: inline-block;
         font-size: 1.6em;
