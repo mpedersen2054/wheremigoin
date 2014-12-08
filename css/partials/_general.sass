@@ -42,15 +42,25 @@ input.text
     color: $purp
     border: 0
     background: none
+    outline: none
+
 .button.primary
     background: $purp
     color: #fff
     padding: 0 10px
     font-size: 12px
+    &:hover
+        color: $purp
+        background-color: #fff
+        border: 1px solid $purp
 .button.primary.large
     min-width: 40px
+    min-height: 20px
     padding: 0 20px
-    font-size: 14px
+    font-size: 16px
+    font-weight: 300
+    letter-spacing: 2px
+    text-transform: uppercase
 
 .full-light
     box-shadow: 0 0 0 1px rgba(0,0,0,0.2),0 0 0 -1px rgba(0,0,0,0.2)

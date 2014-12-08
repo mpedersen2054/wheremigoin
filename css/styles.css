@@ -39,18 +39,27 @@ input.text {
   padding: 0;
   color: #6441a5;
   border: 0;
-  background: none; }
+  background: none;
+  outline: none; }
 
 .button.primary {
   background: #6441a5;
   color: #fff;
   padding: 0 10px;
   font-size: 12px; }
+  .button.primary:hover {
+    color: #6441a5;
+    background-color: #fff;
+    border: 1px solid #6441a5; }
 
 .button.primary.large {
   min-width: 40px;
+  min-height: 20px;
   padding: 0 20px;
-  font-size: 14px; }
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase; }
 
 .full-light {
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2), 0 0 0 -1px rgba(0, 0, 0, 0.2);
@@ -59,44 +68,23 @@ input.text {
   background: rgba(0, 0, 0, 0.05); }
 
 .top-nav {
-  height: 60px;
   position: relative;
+  height: 400px;
+  width: 100%;
   background: #fff;
-  border-bottom: 1px solid purple; }
-  .top-nav .logo {
-    float: left;
-    margin-top: 8px; }
-  .top-nav .header-actions {
-    float: right;
-    margin-top: 4px; }
-    .top-nav .header-actions .search, .top-nav .header-actions .browse, .top-nav .header-actions .go-turbo,
-    .top-nav .header-actions .header-divider, .top-nav .header-actions .log {
-      display: inline-block; }
-  .top-nav #header-search {
-    margin-right: 20px; }
-    .top-nav #header-search .text {
-      width: 200px;
-      background-color: #fff;
-      background-image: url("../images/header_search_icon.svg");
-      background-repeat: no-repeat;
-      background-position: 4px center;
-      text-indent: 20px;
-      margin: 0; }
-    .top-nav #header-search:focus {
-      outline: 0;
-      box-shadow: 0 0 3px 1px rgba(185, 155, 235, 0.75);
-      -webkit-box-shadow: 0 0 3px 1px rgba(185, 155, 235, 0.75);
-      border: 1px solid rgba(100, 65, 165, 0.75); }
-  .top-nav .go-turbo {
-    margin-left: 20px; }
-  .top-nav .header-divider {
-    position: relative;
-    top: 10px;
-    border-right: 1px solid rgba(0, 0, 0, 0.2);
-    width: 0;
-    height: 20px;
-    margin: 5px 20px; }
-  .top-nav .log-in {
-    margin-right: 20px; }
+  border-bottom: 1px solid purple;
+  margin-top: -340px; }
+  .top-nav .bottom {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    right: 0; }
+    .top-nav .bottom .logo {
+      float: left;
+      margin-top: 8px; }
+    .top-nav .bottom .search {
+      float: right;
+      margin-top: 1em;
+      border-radius: 6px; }
 
 /*# sourceMappingURL=styles.css.map */

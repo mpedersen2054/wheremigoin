@@ -1,5 +1,11 @@
 $(function() {
 
+    $('a.search').on('click', function(event) {
+        event.preventDefault();
+
+        $('.top-nav').css('margin-top', '0')
+    })
+
     var loc1 = new locationObj('1331 W Windhill Dr',
                                'Palatine',
                                'IL',
