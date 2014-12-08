@@ -6,6 +6,10 @@ body {
   font: 12px "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1.5; }
 
+hr {
+  color: #f1f1f1;
+  border: 1px solid #f1f1f1; }
+
 a {
   text-decoration: none;
   color: #6441a5; }
@@ -92,15 +96,41 @@ input.text {
       padding: 0.1em 1em;
       color: #6441a5;
       background-color: rgba(0, 0, 0, 0.2);
-      font-size: 2em;
+      font-size: 3em;
       font-weight: 300;
-      letter-spacing: 2px; }
+      letter-spacing: 2px;
+      border-radius: 0 4px 4px 0; }
 
 .loc-data {
-  padding: 1.5em 0; }
+  padding: 3em 0 4em; }
   .loc-data .lqi, .loc-data .demographics {
     float: left;
     width: 50%;
-    border: 1px solid red; }
+    border: 1px solid #f1f1f1;
+    border-radius: 6px; }
+    .loc-data .lqi h2, .loc-data .demographics h2 {
+      font-size: 2.6em;
+      font-weight: 300;
+      letter-spacing: 1.8px;
+      width: 100%;
+      color: #fff;
+      background-color: #6441a5;
+      border-bottom: 2px solid #6441a5;
+      margin-bottom: 10px;
+      padding-left: 0.75em;
+      padding-top: 0.2em;
+      padding-bottom: 0.2em;
+      border-radius: 6px 6px 0 0; }
+    .loc-data .lqi .data, .loc-data .demographics .data {
+      padding: 1em 2em 2em 2em; }
+      .loc-data .lqi .data dl dt, .loc-data .demographics .data dl dt {
+        display: inline-block;
+        font-size: 1.6em;
+        color: #6441a5; }
+      .loc-data .lqi .data dl dd, .loc-data .demographics .data dl dd {
+        display: inline-block;
+        font-size: 1.4em;
+        margin-left: 1.2em;
+        font-weight: 500; }
 
 /*# sourceMappingURL=styles.css.map */
