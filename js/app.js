@@ -46,34 +46,35 @@ $(function() {
 
                 var cords = [lat, lng];
                 // console.log(cords)
-                CLIENT.setCords(cords)
+                // CLIENT.getLqi(cords)
+                CLIENT.getDemographics(cords)
             })
         },
 
-        setCords: function(cords) {
-            console.log(cords[1])
-            CLIENT.cords = cords;
+        getLqi: function(cords) {
+        },
+
+        // http://www.broadbandmap.gov/broadbandmap/demographic/2012/coordinates?latitude=42.456&longitude=-74.987&format=json
+        getDemographics: function(cords) {
+            var lat = cords[0],
+                lng = cords[1],
+                url = 'http://www.broadbandmap.gov/broadbandmap/demographic/2012/coordinates?callback=?';
+
+            params = {
+                latitude: lat,
+                longitude: lng,
+                format: 'jsonp'
+            }
+
+            $.getJSON(url, params, function(data) {
+                console.log(data)
+            })
         }
+
 
     }
 
     
     CLIENT.init(loc1)
-    console.log(CLIENT.cords)
-    
-
-    function locationObj(addr,city,state,zip) {
-        this.addr = addr;
-        this.city = city;
-        this.state = state;
-        this.zip = zip;
-
-        // ?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=KEY
-        // https://maps.googleapis.com/maps/api/geocode/json?address=1331+W+Windhill+Dr,+Palatine+Area,+IL
-        
-
-        // console.log(locLat)
-
-    }
 
 })();
