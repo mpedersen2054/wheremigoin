@@ -90,11 +90,10 @@ input.text {
       position: absolute;
       top: 30px;
       padding: 0.1em 1em;
-      color: #fff;
-      background-color: #808080;
+      color: #6441a5;
+      background-color: rgba(0, 0, 0, 0.2);
       font-size: 2em;
       font-weight: 300;
-      letter-spacing: 2px;
-      border: 1px solid red; }
+      letter-spacing: 2px; }
 
 /*# sourceMappingURL=styles.css.map */
