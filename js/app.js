@@ -5,14 +5,16 @@ $(function() {
                                'IL',
                                '60067');
 
-    loc1.getCords()
-    
+    loc1.geoCords()
 
     function locationObj(addr,city,state,zip) {
         this.addr = addr;
         this.city = city;
         this.state = state;
         this.zip = zip;
+        this.geoCords = function() {
+            return this.getCords
+        }
 
         // ?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=KEY
         // https://maps.googleapis.com/maps/api/geocode/json?address=1331+W+Windhill+Dr,+Palatine+Area,+IL

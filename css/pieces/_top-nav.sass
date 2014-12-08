@@ -1,0 +1,47 @@
+// top-nav
+.top-nav
+    height: 60px
+    position: relative
+    background: #fff
+    border-bottom: 1px solid purple
+
+    .logo
+        float: left
+        margin-top: 8px
+
+    .header-actions
+        float: right
+        margin-top: 4px
+        .search, .browse, .go-turbo,
+        .header-divider, .log
+            display: inline-block
+
+    #header-search
+        margin-right: 20px
+        .text
+            width: 200px
+            background-color: #fff
+            background-image: url("../images/header_search_icon.svg")
+            background-repeat: no-repeat
+            background-position: 4px center
+            text-indent: 20px
+            margin: 0
+        &:focus
+            outline: 0
+            box-shadow: 0 0 3px 1px rgba(185,155,235,0.75)
+            -webkit-box-shadow: 0 0 3px 1px rgba(185,155,235,0.75)
+            border: 1px solid rgba(100,65,165,0.75)
+
+    .go-turbo
+        margin-left: 20px
+
+    .header-divider
+        position: relative
+        top: 10px
+        border-right: 1px solid rgba(0,0,0,0.2)
+        width: 0
+        height: 20px
+        margin: 5px 20px
+
+    .log-in
+        margin-right: 20px
