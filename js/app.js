@@ -42,38 +42,59 @@ $(function() {
 
             $.getJSON(url, function(data) {
                 var lat = data.results[0].geometry.location.lat,
-                    lng = data.results[0].geometry.location.lng
+                    lng = data.results[0].geometry.location.lng,
+                    cords = [lat, lng];
 
-                var cords = [lat, lng];
-                // console.log(cords)
-                // CLIENT.getLqi(cords)
-                CLIENT.getDemographics(cords)
+                // CLIENT.requestLqi(cords)
+                CLIENT.requestDemographics(cords)
             })
         },
 
-        getLqi: function(cords) {
+        requestLqi: function(cords) {
         },
 
         // http://www.broadbandmap.gov/broadbandmap/demographic/2012/coordinates?latitude=42.456&longitude=-74.987&format=json
-        getDemographics: function(cords) {
+        requestDemographics: function(cords) {
             var lat = cords[0],
                 lng = cords[1],
                 url = 'http://www.broadbandmap.gov/broadbandmap/demographic/2012/coordinates?callback=?';
 
-            params = {
+            var params = {
                 latitude: lat,
                 longitude: lng,
                 format: 'jsonp'
             }
 
             $.getJSON(url, params, function(data) {
-                console.log(data)
+                insertData(data.Results)
             })
+
+            function insertData(results) {
+                console.log(results)
+                var college = round('educationBachelorOrGreater'),
+                    hschool = round('educationHighSchoolGraduate'),
+                    medianIncome = results['medianIncome'],
+                    incomeBelowPov = round('incomeBelowPoverty'),
+                    incomeLessThan25 = round('incomeLessThan25'),
+                    income25t50 = round('incomeBetween25to50'),
+                    income50t100 = round('incomeBetween50to100'),
+                    income100t200 = round('incomeBetween100to200')
+
+                function round(resultsProp) {
+                    return Math.round(results[resultsProp] * 100)
+                }
+
+                $('.gc').text(college + '%');
+                $('.ghs').text(hschool + '%');
+                $('.median').text('$' + medianIncome);
+                $('.ibp').text(incomeBelowPov + '%');
+                $('.ilt25').text(incomeLessThan25 + '%');
+                $('.i25-50').text(income25t50 + '%');
+                $('.i50-100').text(income50t100 + '%');
+                $('.i100-200').text(income100t200 + '%');
+            }
         }
-
-
     }
-
     
     CLIENT.init(loc1)
 
