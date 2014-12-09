@@ -53,12 +53,18 @@ $(function() {
                                    .append('<a href="#">'+CLIENT.city+'</a>')
                 $('.loc-img').append('<img src="https://maps.googleapis.com/maps/api/staticmap?center='+lat+','+lng+'&zoom=11&size=1600x1200" width="940px" height="560px">')
 
-                // CLIENT.requestLqi(cords)
+                CLIENT.requestLqi(cords)
                 CLIENT.requestDemographics(cords)
             })
         },
 
-        requestLqi: function(cords) {},
+        requestLqi: function(cords) {
+            var lat = cords[0],
+                lng = cords[1],
+                url = 'http://api.placeilive.com/v1/houses/search?ll='+lat+','+lng
+
+            console.log(url)
+        },
 
         // http://www.broadbandmap.gov/broadbandmap/demographic/2012/coordinates?latitude=42.456&longitude=-74.987&format=json
         requestDemographics: function(cords) {
@@ -103,6 +109,6 @@ $(function() {
         }
     }
     
-    // CLIENT.init(loc1)
+    CLIENT.init(loc1)
 
 })();
