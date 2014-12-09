@@ -1,5 +1,5 @@
 $(function() {
-    // from js/location_form_data.js
+    // from js/location_form_data.js 
     $('#state-input').html(usStateData);
 
     $('a.search').on('click', function(event) {
