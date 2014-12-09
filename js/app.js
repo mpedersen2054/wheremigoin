@@ -63,7 +63,9 @@ $(function() {
                 lng = cords[1],
                 url = 'http://api.placeilive.com/v1/houses/search?ll='+lat+','+lng
 
-            console.log(url)
+            $.getJSON(url, function(data) {
+                console.log(data);
+            })
         },
 
         // http://www.broadbandmap.gov/broadbandmap/demographic/2012/coordinates?latitude=42.456&longitude=-74.987&format=json
