@@ -12,7 +12,18 @@
 <nav class="top-nav">
     <div class="top">
         <div class="container">
-            <h1>hello there</h1>
+            <form id="location-form">
+                <input type="text" id="street-input" placeholder="1331 E Windwall St">
+                <br>
+                <select name="" id="state-input">
+                </select>
+                <br>
+                <input type="text" id="city-input" placeholder="Chicago">
+                <br>
+                <input type="text" id="zip-input" placeholder="60072">
+                <br>
+                <input type="submit" value="Submit">
+            </form>
         </div>
     </div>
 
@@ -35,6 +46,7 @@
             <h2 class="loc-img-title">
                 <a href="#">San Pablo, Brazil</a>
             </h2>
+            <div class="jumbomap">
             <img src="https://maps.googleapis.com/maps/api/staticmap?center=-15.800513,-47.91378&zoom=11&size=1600x1200" width="940px" height="560px">
         </div>
     </div>
@@ -107,6 +119,7 @@
 
 
 <script src="js/jquery.min.js"></script>
+<script src="js/location_form_data.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>

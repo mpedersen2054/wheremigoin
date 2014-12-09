@@ -1,16 +1,22 @@
 $(function() {
+    // from js/location_form_data.js
+    $('#state-input').html(usStateData);
 
     $('a.search').on('click', function(event) {
+        $('.top-nav').css('margin-top', '0');
+    })
+
+    $('#location-form').on('submit', function(event) {
         event.preventDefault();
-        var street = $('#street-input'),
-            city = $('#city-input'),
-            state = $('#state-input'),
-            zip = $('#zip-input'),
+        var street = $('#street-input').val(),
+            city = $('#city-input').val(),
+            state = $('#state-input').val(),
+            zip = $('#zip-input').val(),
             address = [street,city,state,zip]
 
-        $('.top-nav').css('margin-top', '0')
+        console.log(address)
 
-        CLIENT.init(address)
+        CLIENT.init(address);
     });
     
     var loc1 = ['1331 W Windhill Dr', 'Palatine', 'IL', '60067']
@@ -29,7 +35,7 @@ $(function() {
 
         getCords: function(address) {
             var key = 'AIzaSyAYrG38he5q3MzcsxyAYC_uWsSFy5SSG7w',
-            url = '';
+                url = '';
 
             url+='https://maps.googleapis.com/maps/api/geocode/json';
             url+='?address='+address[0].split(' ').join('+');
@@ -37,21 +43,22 @@ $(function() {
             url+=',+'+address[2];
             url+='&key='+key;
 
-            console.log(url)
-
-
             $.getJSON(url, function(data) {
                 var lat = data.results[0].geometry.location.lat,
                     lng = data.results[0].geometry.location.lng,
                     cords = [lat, lng];
+
+                $('.loc-img').find('img').remove();
+                $('.loc-img-title').html('')
+                                   .append('<a href="#">'+CLIENT.city+'</a>')
+                $('.loc-img').append('<img src="https://maps.googleapis.com/maps/api/staticmap?center='+lat+','+lng+'&zoom=11&size=1600x1200" width="940px" height="560px">')
 
                 // CLIENT.requestLqi(cords)
                 CLIENT.requestDemographics(cords)
             })
         },
 
-        requestLqi: function(cords) {
-        },
+        requestLqi: function(cords) {},
 
         // http://www.broadbandmap.gov/broadbandmap/demographic/2012/coordinates?latitude=42.456&longitude=-74.987&format=json
         requestDemographics: function(cords) {
@@ -96,6 +103,6 @@ $(function() {
         }
     }
     
-    CLIENT.init(loc1)
+    // CLIENT.init(loc1)
 
 })();
