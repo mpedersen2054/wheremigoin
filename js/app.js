@@ -61,7 +61,7 @@ $(function() {
         requestLqi: function(cords) {
             var lat = cords[0],
                 lng = cords[1],
-                url = 'http://api.placeilive.com/v1/houses/search?ll='+lat+','+lng
+                url = 'http://api.placeilive.com/v1/houses/search?ll='+lat+','+lng+'?callback=?';
 
             $.getJSON(url, function(data) {
                 console.log(data);
