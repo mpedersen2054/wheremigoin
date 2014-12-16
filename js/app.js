@@ -19,7 +19,7 @@ $(function() {
         CLIENT.init(address);
     });
     
-    var loc1 = ['1331 W Windhill Dr', 'Palatine', 'IL', '60067']
+    var loc1 = ['141 W Jackson Blvd', 'Chicago', 'IL', '60604']
 
     var CLIENT = CLIENT || {
 
@@ -61,11 +61,17 @@ $(function() {
         requestLqi: function(cords) {
             var lat = cords[0],
                 lng = cords[1],
-                url = 'http://api.placeilive.com/v1/houses/search?ll='+lat+','+lng+'?callback=?';
+                cordsForUrl = lat+','+lng
 
-            $.getJSON(url, function(data) {
-                console.log(data);
+            url = 'http://api.placeilive.com/v1/houses/search?callback=?';
+
+            var jqxhr = $.getJSON(url, { ll: cordsForUrl }, function (data) {
+                console.log(data)
             })
+            console.log(jqxhr)
+            // .done(function(data) {
+            //     console.log(data)
+            // })
         },
 
         // http://www.broadbandmap.gov/broadbandmap/demographic/2012/coordinates?latitude=42.456&longitude=-74.987&format=json
@@ -85,7 +91,6 @@ $(function() {
             })
 
             function insertData(results) {
-                console.log(results)
                 var college = round('educationBachelorOrGreater'),
                     hschool = round('educationHighSchoolGraduate'),
                     medianIncome = results['medianIncome'],
