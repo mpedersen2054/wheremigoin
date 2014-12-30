@@ -1,4 +1,4 @@
-(function($, document) {
+(function($, window) {
     
 var loc1 = ['141 W Jackson Blvd', 'Chicago', 'IL', '60604']
 
@@ -33,35 +33,24 @@ var CLIENT = CLIENT || {
                 lng = data.results[0].geometry.location.lng,
                 cords = [lat, lng];
 
-            $('.loc-img').find('img').remove();
-            $('.loc-img-title').html('').append('<a href="#">'+CLIENT.city+'</a>');
-            $('.jumbomap').replace('<img src="https://maps.googleapis.com/maps/api/staticmap?center='+lat+','+lng+'&zoom=11&size=1600x1200" width="940px" height="560px">');
+            updateJumbotron(lat, lng);
+            CLIENT.requestWeather(cords);
+            CLIENT.requestDemographics(cords);
 
-            CLIENT.requestLqi(cords)
-            CLIENT.requestDemographics(cords)
-        })
-    },
+            function updateJumbotron(lat, lng) {
+                var imgUrl = '<img src="https://maps.googleapis.com/maps/api/staticmap?center='+lat+','+lng+'&zoom=11&size=1600x1200" width="940px" height="560px">'
 
-    requestLqi: function(cords) {
-        var lat = cords[0],
-            lng = cords[1],
-            queryStr = 'http://api.placeilive.com/v1/houses/search?ll='+lat+','+lng;
-
-        $.ajax({
-            type: 'GET',
-            dataType: 'json',
-            url: queryStr,
-            success: function(lqiData) {
-                console.log(lqiData);
-            },
-            error: function(xhr, status, errorThrown) {
-                console.log(errorThrown);
-                console.log(xhr, status);
+                $('.loc-img').find('img').remove();
+                $('.loc-img-title').html('').append('<a href="#">'+CLIENT.city+'</a>');
+                $('.loc-img').append(imgUrl);
             }
         })
     },
 
-    // http://www.broadbandmap.gov/broadbandmap/demographic/2012/coordinates?latitude=42.456&longitude=-74.987&format=json
+    requestWeather: function(cords) {
+        console.log(cords+'for weather');
+    },
+
     requestDemographics: function(cords) {
         var lat = cords[0],
             lng = cords[1],
@@ -125,4 +114,4 @@ var EVENTS = EVENTS || {
 
 CLIENT.init(loc1);
 
-})(jQuery, document);
+})(jQuery, window);
