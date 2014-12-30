@@ -63,7 +63,8 @@ input.text {
   font-size: 16px;
   font-weight: 300;
   letter-spacing: 2px;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  font-weight: 300; }
 
 .top-nav {
   position: relative;
@@ -80,9 +81,10 @@ input.text {
       float: left;
       margin-bottom: 8px; }
     .top-nav .bottom .search {
+      font-weight: 300;
       float: right;
       margin-top: 0.2em;
-      border-radius: 6px; }
+      border-radius: 3px; }
 
 .loc-img-area {
   height: 600px;
