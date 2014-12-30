@@ -12,6 +12,7 @@ var CLIENT = CLIENT || {
         var addr = address;
 
         // turn events on
+        EVENTS.insertStateData();
         EVENTS.searchDropdown();
         EVENTS.searchFormSub();
 
@@ -33,11 +34,13 @@ var CLIENT = CLIENT || {
                 lng = data.results[0].geometry.location.lng,
                 cords = [lat, lng];
 
-            updateJumbotron(lat, lng);
+            console.log(cords)
+
+            updateJumbotron();
             CLIENT.requestWeather(cords);
             CLIENT.requestDemographics(cords);
 
-            function updateJumbotron(lat, lng) {
+            function updateJumbotron() {
                 var imgUrl = '<img src="https://maps.googleapis.com/maps/api/staticmap?center='+lat+','+lng+'&zoom=11&size=1600x1200" width="940px" height="560px">',
                     $locImg = $('.loc-img');
 
@@ -49,7 +52,7 @@ var CLIENT = CLIENT || {
     },
 
     requestWeather: function(cords) {
-        console.log(cords+'for weather');
+        console.log(cords+' for weather');     
     },
 
     requestDemographics: function(cords) {
@@ -65,7 +68,7 @@ var CLIENT = CLIENT || {
 
         $.getJSON(url, params, function(data) {
             insertData(data.Results)
-        });
+        })
 
         function insertData(results) {
             var college = round('educationBachelorOrGreater'),
@@ -94,10 +97,15 @@ var CLIENT = CLIENT || {
 }
 
 var EVENTS = EVENTS || {
+    insertStateData: function() {
+        var stateInp = $('#state-input'),
+            stateData = usStateData(); // from loc_form_data.js
+        stateInp.append(stateData);
+    },
     searchDropdown: function() {
         $('a.search').on('click', function(event) {
             $('.top-nav').css('margin-top', '0');
-        });
+        })
     },
     searchFormSub: function() {
         $('#location-form').on('submit', function(event) {
@@ -107,9 +115,8 @@ var EVENTS = EVENTS || {
                 state = $('#state-input').val(),
                 zip = $('#zip-input').val(),
                 address = [street,city,state,zip];
-
             CLIENT.init(address);
-        });
+        })
     }
 }
 

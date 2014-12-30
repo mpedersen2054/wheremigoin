@@ -1,6 +1,5 @@
 function usStateData() {
     var selectInput;
-
     selectInput+='<option value="AL">Alabama</option>'
     selectInput+='<option value="AK">Alaska</option>'
     selectInput+='<option value="AZ">Arizona</option>'
@@ -52,6 +51,5 @@ function usStateData() {
     selectInput+='<option value="WV">West Virginia</option>'
     selectInput+='<option value="WI">Wisconsin</option>'
     selectInput+='<option value="WY">Wyoming</option>'
-
     return selectInput;
 }
