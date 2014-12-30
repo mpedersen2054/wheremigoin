@@ -34,9 +34,8 @@ var CLIENT = CLIENT || {
                 cords = [lat, lng];
 
             $('.loc-img').find('img').remove();
-            $('.loc-img-title').html('')
-                               .append('<a href="#">'+CLIENT.city+'</a>')
-            $('.loc-img').append('<img src="https://maps.googleapis.com/maps/api/staticmap?center='+lat+','+lng+'&zoom=11&size=1600x1200" width="940px" height="560px">')
+            $('.loc-img-title').html('').append('<a href="#">'+CLIENT.city+'</a>');
+            $('.jumbomap').replace('<img src="https://maps.googleapis.com/maps/api/staticmap?center='+lat+','+lng+'&zoom=11&size=1600x1200" width="940px" height="560px">');
 
             CLIENT.requestLqi(cords)
             CLIENT.requestDemographics(cords)
@@ -46,11 +45,20 @@ var CLIENT = CLIENT || {
     requestLqi: function(cords) {
         var lat = cords[0],
             lng = cords[1],
-            cordsForUrl = lat+','+lng
+            queryStr = 'http://api.placeilive.com/v1/houses/search?ll='+lat+','+lng;
 
-        url = 'http://api.placeilive.com/v1/houses/search?callback=?';
-
-        console.log('hello')
+        $.ajax({
+            type: 'GET',
+            dataType: 'json',
+            url: queryStr,
+            success: function(lqiData) {
+                console.log(lqiData);
+            },
+            error: function(xhr, status, errorThrown) {
+                console.log(errorThrown);
+                console.log(xhr, status);
+            }
+        })
     },
 
     // http://www.broadbandmap.gov/broadbandmap/demographic/2012/coordinates?latitude=42.456&longitude=-74.987&format=json
