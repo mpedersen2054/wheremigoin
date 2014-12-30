@@ -38,11 +38,12 @@ var CLIENT = CLIENT || {
             CLIENT.requestDemographics(cords);
 
             function updateJumbotron(lat, lng) {
-                var imgUrl = '<img src="https://maps.googleapis.com/maps/api/staticmap?center='+lat+','+lng+'&zoom=11&size=1600x1200" width="940px" height="560px">'
+                var imgUrl = '<img src="https://maps.googleapis.com/maps/api/staticmap?center='+lat+','+lng+'&zoom=11&size=1600x1200" width="940px" height="560px">',
+                    $locImg = $('.loc-img');
 
-                $('.loc-img').find('img').remove();
+                $locImg.find('img').remove();
                 $('.loc-img-title').html('').append('<a href="#">'+CLIENT.city+'</a>');
-                $('.loc-img').append(imgUrl);
+                $locImg.append(imgUrl);
             }
         })
     },

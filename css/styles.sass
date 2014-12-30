@@ -5,41 +5,111 @@
 
 .loc-data
     padding: 3em 2em 4em
-    .lqi, .demographics
-        float: left
-        width: 50%
-        border: 1px solid $lgrey
-        border-radius: 6px
-        h2
-            font-size: 2.6em
-            font-weight: 300
-            letter-spacing: 1.8px
-            width: 100%
-            color: $purp
-            background-color: $lpurp
-            border-bottom: 2px solid $purp
-            margin-bottom: 10px
-            padding-left: 1.6em
-            padding-top: 0.2em
-            padding-bottom: 0.2em
-            border-radius: 6px 6px 0 0
-        .data
-            padding: 1em 4em
 
-            dl
-                dt
-                    display: inline-block
-                    font-size: 1.6em
-                    color: $purp
-                dd
-                    display: inline-block
-                    font-size: 1.4em
-                    margin-left: 1.2em
-                    font-weight: 500
-
-    .lqi h2, .demographics h2
-        text-transform: uppercase
-        font-weight: 600
-        font-size: 1.6em
+.weather, .demographics
+    float: left
+    width: 50%
+    border: 1px solid $lgrey
+    border-radius: 6px
+    h2
+        font-size: 2.6em
+        font-weight: 300
         letter-spacing: 1.8px
-        padding-left: 2.4em
+        width: 100%
+        color: $purp
+        background-color: $lpurp
+        border-bottom: 2px solid $purp
+        margin-bottom: 10px
+        padding-left: 1.6em
+        padding-top: 0.2em
+        padding-bottom: 0.2em
+        border-radius: 6px 6px 0 0
+
+.demographics
+    border-bottom: 2px solid $dgrey
+    .data
+        padding: 1em 4em
+        dl
+            dt
+                display: inline-block
+                font-size: 1.6em
+                color: $purp
+            dd
+                display: inline-block
+                font-size: 1.4em
+                margin-left: 1.2em
+                font-weight: 500
+
+.weather
+    ul.days
+        height: 445px
+        li
+            height: 65px
+            padding: 0.4em 0
+            &:last-child
+                border-bottom: none
+            .left-meta
+                float: left
+                height: 100%
+                width: 26%
+                background-color: $purp
+                color: #fff
+                font-size: 1.2em
+                font-weight: 200
+                letter-spacing: 2.4px
+                text-transform: uppercase
+                text-align: center
+                padding-top: 0.7em
+                margin-left: 0.4em
+                border: 3px solid $lpurp
+                border-radius: 2px 0 0 2px
+            .right-meta
+                float: left
+                height: 100%
+                width: 70%
+                padding-left: 0.4em
+                border-bottom: 2px solid $lpurp
+                .weather-meta
+                    float: left
+                    height: 100%
+                    width: 55%
+                    padding-left: 0.4em
+                    h3
+                        height: 40%
+                        width: 100%
+                        font-size: 1.2em
+                        font-weight: 600
+                        letter-spacing: 2px
+                        text-transform: uppercase
+                        overflow: hidden
+                        margin-top: 0.6em
+                        color: $purp
+                        text-decoration: underline
+                    span
+                        width: 100%
+                        font-size: 1em
+                        letter-spacing: 1.2px
+                        overflow: hidden
+                        color: #666
+                .tempurature
+                    float: right
+                    height: 100%
+                    width: 22%
+                    font-size: 1.6em
+                    font-weight: 300
+                    letter-spacing: 1.6px
+                    text-align: center
+                    padding-top: 0.4em
+                img
+                    float: right
+                    height: 100%
+                    width: 15%
+                    padding-bottom: 0.6em
+                    margin-right: 1em
+
+.weather h2, .demographics h2
+    text-transform: uppercase
+    font-weight: 600
+    font-size: 1.6em
+    letter-spacing: 1.8px
+    padding-left: 2.4em
