@@ -50,7 +50,26 @@ var CLIENT = CLIENT || {
     },
 
     requestWeather: function(cords) {
-        console.log(cords+' for weather');   
+        var url = 'http://api.openweathermap.org/data/2.5/forecast/daily?lat=35&lon=139&cnt=7&mode=json';
+
+        $.getJSON(url, function(data) {
+            insertWeather(data);
+        });
+
+        function insertWeather(weatherData) {
+            var d = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'],
+                todaysDate = new Date().getUTCDay(),
+                dayToEndWeek = d.splice(todaysDate, d.length);
+                days = dayToEndWeek.concat(d),
+                i = 0;
+
+            for ( ; i < 7; i++) {
+                console.log(days[i]);
+            }
+
+            console.log(days)
+            console.log(weatherData);
+        }
     },
 
     requestDemographics: function(cords) {
@@ -65,10 +84,10 @@ var CLIENT = CLIENT || {
         }
 
         $.getJSON(url, params, function(data) {
-            insertData(data.Results)
+            insertDemo(data.Results)
         })
 
-        function insertData(results) {
+        function insertDemo(results) {
             var college = round('educationBachelorOrGreater'),
                 hschool = round('educationHighSchoolGraduate'),
                 medianIncome = results['medianIncome'],
