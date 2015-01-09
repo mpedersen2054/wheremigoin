@@ -1,4 +1,4 @@
-(function($, window) {
+(function($, document, window) {
     
 var loc1 = ['141 W Jackson Blvd', 'Chicago', 'IL', '60604']
 
@@ -34,8 +34,6 @@ var CLIENT = CLIENT || {
                 lng = data.results[0].geometry.location.lng,
                 cords = [lat, lng];
 
-            console.log(cords)
-
             updateJumbotron();
             CLIENT.requestWeather(cords);
             CLIENT.requestDemographics(cords);
@@ -52,7 +50,7 @@ var CLIENT = CLIENT || {
     },
 
     requestWeather: function(cords) {
-        console.log(cords+' for weather');     
+        console.log(cords+' for weather');   
     },
 
     requestDemographics: function(cords) {
@@ -80,7 +78,7 @@ var CLIENT = CLIENT || {
                 income50t100 = round('incomeBetween50to100'),
                 income100t200 = round('incomeBetween100to200');
 
-            function round(resultsProp) { // uses data from results
+            function round(resultsProp) { // takes the prop and gets %
                 return Math.round(results[resultsProp] * 100)
             }
 
@@ -122,4 +120,4 @@ var EVENTS = EVENTS || {
 
 CLIENT.init(loc1);
 
-})(jQuery, window);
+})(jQuery, document, window);
