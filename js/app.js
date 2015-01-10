@@ -50,7 +50,8 @@ var CLIENT = CLIENT || {
     },
 
     requestWeather: function(cords) {
-        var url = 'http://api.openweathermap.org/data/2.5/forecast/daily?lat=35&lon=139&cnt=7&mode=json';
+        var url = 'http://api.openweathermap.org/data/2.5/forecast/daily?lat='+cords[0]+
+                  '&lon='+cords[1]+'&cnt=7&units=imperial&mode=json';
 
         $.getJSON(url, function(data) {
             insertWeather(data);
@@ -58,30 +59,45 @@ var CLIENT = CLIENT || {
 
         function insertWeather(weatherData) {
             var d = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'],
-                todaysDate = new Date().getUTCDay(),
+                todaysDate = new Date().getDay(),
                 dayToEndWeek = d.splice(todaysDate, d.length);
                 days = dayToEndWeek.concat(d),
-                i = 0;
+                daysUl = $('ul.days');
 
-            for ( ; i < 7; i++) {
-                console.log(days[i]);
+            console.log(weekOfWeather);
+
+            for (var i=0; i<7; i++) {
+                var weekOfWeather = weatherData.list,
+                    weatherDay = days[i],
+                    weatherMetaTitle = weekOfWeather[i].weather[0].main,
+                    weatherMetaDesc = weekOfWeather[i].weather[0].description,
+                    weatherTemp = Math.round(weekOfWeather[i].temp.day),
+                    weatherIconCode = weekOfWeather[i].weather[0].icon,
+                    weatherIcon = '<img src="http://openweathermap.org/img/w/'+weatherIconCode+'.png">',
+                    day = '';
+
+                day+='<li class='+weatherDay+'</li>';
+                day+='<div class="left-meta">'+weatherDay+'</div>'
+                day+='<div class="right-meta">'
+                day+='<div class="weather-meta">'
+                day+='<h3>'+weatherMetaTitle+'</h3>'
+                day+='<span>'+weatherMetaDesc+'</span>'
+                day+='</div>'
+                day+=weatherIcon
+                day+='<div class="tempurature">'+weatherTemp+'&#186;</div>'
+                day+='</div>'
+                day+='</li>'
+
+                daysUl.append(day);
             }
-
-            console.log(days)
-            console.log(weatherData);
         }
     },
 
     requestDemographics: function(cords) {
         var lat = cords[0],
             lng = cords[1],
-            url = 'http://www.broadbandmap.gov/broadbandmap/demographic/2012/coordinates?callback=?';
-
-        var params = {
-            latitude: lat,
-            longitude: lng,
-            format: 'jsonp'
-        }
+            url = 'http://www.broadbandmap.gov/broadbandmap/demographic/2012/coordinates?callback=?',
+            params = { latitude: lat, longitude: lng, format: 'jsonp' };
 
         $.getJSON(url, params, function(data) {
             insertDemo(data.Results)
