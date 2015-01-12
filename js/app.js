@@ -1,6 +1,4 @@
 (function($, document, window) {
-    
-// var loc1 = ['141 W Jackson Blvd', 'Chicago', 'IL', '60604']
 
 var CLIENT = CLIENT || {
 
@@ -148,6 +146,7 @@ var EVENTS = EVENTS || {
         }
     },
     searchFormSub: function() {
+        var cancelSearch = $('<i class="fa fa-caret-square-o-up"></i>');
         $('#location-form').on('submit', function(event) {
             event.preventDefault();
             var street = $('#street-input').val(),
@@ -156,21 +155,17 @@ var EVENTS = EVENTS || {
                 zip = $('#zip-input').val(),
                 address = [street,city,state,zip];
 
-            if (address.length === 4) {
-                $('i.fa-caret-square-o-up').replaceWith('<a href="#" class="search button primary large">Search</a>');
-                $('.top-nav').animate({ marginTop: '-350px' }, 200)
-                CLIENT.init(address);
-            }
-            else {
-                alert('Please enter all fields!');
-            }
+            $('i.fa-caret-square-o-up').hide();
+            $('a.search').show();
+            $('.top-nav').animate({ marginTop: '-350px' }, 200)
+            CLIENT.init(address);
         })
     }
 }
 
+// turn events on
 EVENTS.insertStateData();
 EVENTS.searchDropdown();
-EVENTS.searchFormSub();
-// CLIENT.init(loc1);
+EVENTS.searchFormSub(); // initializes CLIENT
 
 })(jQuery, document, window);
