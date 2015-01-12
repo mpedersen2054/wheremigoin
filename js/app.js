@@ -1,6 +1,6 @@
 (function($, document, window) {
     
-var loc1 = ['141 W Jackson Blvd', 'Chicago', 'IL', '60604']
+// var loc1 = ['141 W Jackson Blvd', 'Chicago', 'IL', '60604']
 
 var CLIENT = CLIENT || {
 
@@ -10,11 +10,6 @@ var CLIENT = CLIENT || {
         CLIENT.state = address[2];
         CLIENT.zip = address[3];
         var addr = address;
-
-        // turn events on
-        EVENTS.insertStateData();
-        EVENTS.searchDropdown();
-        EVENTS.searchFormSub();
 
         CLIENT.getCords(addr);
     },
@@ -64,8 +59,6 @@ var CLIENT = CLIENT || {
                 days = dayToEndWeek.concat(d),
                 daysUl = $('ul.days');
 
-            console.log(weekOfWeather);
-
             for (var i=0; i<7; i++) {
                 var weekOfWeather = weatherData.list,
                     weatherDay = days[i],
@@ -84,7 +77,7 @@ var CLIENT = CLIENT || {
                 day+='<span>'+weatherMetaDesc+'</span>'
                 day+='</div>'
                 day+=weatherIcon
-                day+='<div class="tempurature">'+weatherTemp+'&#186;</div>'
+                day+='<div class="tempurature">'+weatherTemp+'&#186</div>'
                 day+='</div>'
                 day+='</li>'
 
@@ -136,9 +129,23 @@ var EVENTS = EVENTS || {
         stateInp.append(stateData);
     },
     searchDropdown: function() {
+        var cancelSearch = $('<i class="fa fa-caret-square-o-up"></i>');
         $('a.search').on('click', function(event) {
-            $('.top-nav').css('margin-top', '0');
+            event.preventDefault();
+            $('.top-nav').animate({ marginTop: '0' }, 200)
+            $(this).after(cancelSearch)
+            cancelSearch.show();
+            $(this).hide();
+            clickCancelSearch();
         })
+
+        function clickCancelSearch() {
+            cancelSearch.on('click', function(event) {
+                $('.top-nav').animate({ marginTop: '-350px' }, 200);
+                $(this).hide();
+                $('a.search').show();
+            })
+        }
     },
     searchFormSub: function() {
         $('#location-form').on('submit', function(event) {
@@ -148,11 +155,22 @@ var EVENTS = EVENTS || {
                 state = $('#state-input').val(),
                 zip = $('#zip-input').val(),
                 address = [street,city,state,zip];
-            CLIENT.init(address);
+
+            if (address.length === 4) {
+                $('i.fa-caret-square-o-up').replaceWith('<a href="#" class="search button primary large">Search</a>');
+                $('.top-nav').animate({ marginTop: '-350px' }, 200)
+                CLIENT.init(address);
+            }
+            else {
+                alert('Please enter all fields!');
+            }
         })
     }
 }
 
-CLIENT.init(loc1);
+EVENTS.insertStateData();
+EVENTS.searchDropdown();
+EVENTS.searchFormSub();
+// CLIENT.init(loc1);
 
 })(jQuery, document, window);

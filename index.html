@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Wheremigoin</title>
 
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/forms-nr-min.css">
     <link rel="stylesheet" href="css/resets.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -11,13 +13,30 @@
 
 <nav class="top-nav">
     <div class="top">
-        <div class="container">
-            <form id="location-form">
-                <input type="text" id="street-input" placeholder="1331 E Windwall St"> <br />
-                <select name="" id="state-input"></select> <br />
-                <input type="text" id="city-input" placeholder="Chicago"> <br />
-                <input type="text" id="zip-input" placeholder="60072"> <br />
-                <input type="submit" value="Submit">
+        <h2>Where do you want to go?</h2>
+        <div class="container form-container">
+            <form id="location-form" class="pure-form pure-form-aligned">
+                <fieldset>
+                    <div class="pure-control-group">
+                        <label for="street-input">Street</label>
+                        <input type="text" id="street-input" placeholder="Street">
+                    </div>
+                    <div class="pure-control-group">
+                        <label for="city-input">City</label>
+                        <input type="text" id="city-input" placeholder="City">
+                    </div>
+                    <div class="pure-control-group">
+                        <label for="state-input">State</label>
+                        <select id="state-input"></select>
+                    </div>
+                    <div class="pure-control-group">
+                        <label for="zip-input">Zip Code</label>
+                        <input type="text" id="zip-input" placeholder="Zip">
+                    </div>
+                    <div class="pure-control-group">
+                        <input type="submit" class="search button primary" value="Search Location">
+                    </div>
+                </fieldset>
             </form>
         </div>
     </div>
@@ -48,115 +67,11 @@
 
 <section class="loc-data">
     <div class="container">
+
         <div class="weather">
             <h2>Weather</h2>
 
             <ul class="days">
-                <!-- <li class="sunday">
-                    <div class="left-meta">
-                        Sunday
-                    </div>
-                    <div class="right-meta">
-                        <div class="weather-meta">
-                            <h3>Sunny</h3>
-                            <span>Lorem ipsum dolor.</span>
-                        </div>
-                        <img src="http://openweathermap.org/img/w/10d.png" alt="forcast">
-                        <div class="tempurature">
-                            48
-                        </div>
-                    </div>
-                </li>
-                <li class="monday">
-                    <div class="left-meta">
-                        Monday
-                    </div>
-                    <div class="right-meta">
-                        <div class="weather-meta">
-                            <h3>Partly Cloudy</h3>
-                            <span>meatballs possible</span>
-                        </div>
-                        <img src="http://openweathermap.org/img/w/10d.png" alt="forcast">
-                        <div class="tempurature">
-                            42
-                        </div>
-                    </div>
-                </li>
-                <li class="tuesday">
-                    <div class="left-meta">
-                        Tuesday
-                    </div>
-                    <div class="right-meta">
-                        <div class="weather-meta">
-                            <h3>Rainy</h3>
-                            <span>its gon rain</span>
-                        </div>
-                        <img src="http://openweathermap.org/img/w/10d.png" alt="forcast">
-                        <div class="tempurature">
-                            38
-                        </div>
-                    </div>
-                </li>
-                <li class="wednesday">
-                    <div class="left-meta">
-                        Wednesday
-                    </div>
-                    <div class="right-meta">
-                        <div class="weather-meta">
-                            <h3>Partly Cloudy with meatballs</h3>
-                            <span>starting to get nice</span>
-                        </div>
-                        <img src="http://openweathermap.org/img/w/10d.png" alt="forcast">
-                        <div class="tempurature">
-                            48
-                        </div>
-                    </div>
-                </li>
-                <li class="thursday">
-                    <div class="left-meta">
-                        Thursday
-                    </div>
-                    <div class="right-meta">
-                        <div class="weather-meta">
-                            <h3>Sunny</h3>
-                            <span>its nice out</span>
-                        </div>
-                        <img src="http://openweathermap.org/img/w/10d.png" alt="forcast">
-                        <div class="tempurature">
-                            69
-                        </div>
-                    </div>
-                </li>
-                <li class="friday">
-                    <div class="left-meta">
-                        Friday
-                    </div>
-                    <div class="right-meta">
-                        <div class="weather-meta">
-                            <h3>Hot</h3>
-                            <span>its hot</span>
-                        </div>
-                        <img src="http://openweathermap.org/img/w/10d.png" alt="forcast">
-                        <div class="tempurature">
-                            72
-                        </div>
-                    </div>
-                </li>
-                <li class="saturday">
-                    <div class="left-meta">
-                        Saturday
-                    </div>
-                    <div class="right-meta">
-                        <div class="weather-meta">
-                            <h3>Snow</h3>
-                            <span>snow sucks</span>
-                        </div>
-                        <img src="http://openweathermap.org/img/w/10d.png" alt="forcast">
-                        <div class="tempurature">
-                            29
-                        </div>
-                    </div>
-                </li> -->
             </ul>
 
         </div>
