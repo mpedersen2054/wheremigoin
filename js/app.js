@@ -9,6 +9,7 @@ var CLIENT = CLIENT || {
         CLIENT.zip = address[3];
         var addr = address;
 
+        $('ul.days').children('li').remove();
         CLIENT.getCords(addr);
     },
 
@@ -147,6 +148,7 @@ var EVENTS = EVENTS || {
     },
     searchFormSub: function() {
         var cancelSearch = $('<i class="fa fa-caret-square-o-up"></i>');
+
         $('#location-form').on('submit', function(event) {
             event.preventDefault();
             var street = $('#street-input').val(),
